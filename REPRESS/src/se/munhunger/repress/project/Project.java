@@ -141,6 +141,22 @@ public class Project extends DatabaseObject
 		return null;
 	}
 	
+	public static ArrayList<Project> getAllProjects()
+	{
+		ArrayList<Project> projects = new ArrayList<>();
+		try (Statement stmt = DatabaseManager.getStatement())
+		{
+			ResultSet res = stmt.executeQuery("SELECT id FROM project");
+			while (res.next())
+				projects.add(new Project(res.getInt("id")));
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return projects;
+	}
+	
 	public Project(int id)
 	{
 		this.id = id;

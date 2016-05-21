@@ -3,27 +3,17 @@ package se.munhunger.repress;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import se.munhunger.repress.gui.RequisiteTable;
 import se.munhunger.repress.gui.SplashScene;
+import se.munhunger.repress.project.Project;
 
 public class Main extends Application
 {
 	
 	public static void main(String[] args)
 	{
-		// User user = User.userExists("munhunger") ? User.getUser("munhunger")
-		// : User.createUser("munhunger");
-		// Project proj = Project.projectExists("DCTM D2 ÄoD") ?
-		// Project.getProject("DCTM D2 ÄoD")
-		// : Project.createProject("DCTM D2 ÄoD", user);
-		// Requisite.createRequisite("Krav #2", "Måste kunna logga ut eller
-		// nått", user, user, proj);
-		// for (Requisite req : proj.getRequisites())
-		// System.out.println(req.getTitle() + "\t" + req.getDescription());
-		// DatabaseManager.closeConnection();
-		// System.exit(0);
 		launch(args);
 	}
 	
@@ -50,7 +40,8 @@ public class Main extends Application
 			}
 			Platform.runLater(() ->
 			{
-				primaryStage.setScene(new Scene(new Label("UPDATED")));
+				primaryStage.setScene(new Scene(new RequisiteTable(Project.getAllProjects().get(0))));
+				primaryStage.setResizable(true);
 			});
 		}).start();
 	}

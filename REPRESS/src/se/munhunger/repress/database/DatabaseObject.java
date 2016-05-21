@@ -91,7 +91,7 @@ public abstract class DatabaseObject
 			ResultSet res = stmt
 					.executeQuery(String.format("SELECT %s FROM %s WHERE id=" + getID(), label, getTableName()));
 			if (res.next())
-				return res.getInt("name");
+				return res.getInt(label);
 		}
 		catch (SQLException e)
 		{
